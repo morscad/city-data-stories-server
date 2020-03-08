@@ -2,7 +2,7 @@ const express = require("express");
 const mysql = require("mysql");
 const axios = require("axios");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const dbConfig = require('./config/config.js');
 
 console.log(dbConfig);
@@ -60,4 +60,4 @@ app.get("/lon/:lon/lat/:lat", (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(PORT, () => console.log(`City Data Stories listening on port ${PORT}!`));
