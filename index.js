@@ -10,7 +10,7 @@ const conn = mysql.createConnection(dbConfig);
 
 conn.connect(function(err) {
   if (err) throw err;
-  // console.log("Connected!");
+  console.log("DB Connected!");
 });
 
 app.get("/", (req, res) => {
