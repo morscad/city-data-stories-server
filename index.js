@@ -1,7 +1,8 @@
 const express = require("express");
 const mysql = require("mysql");
 const axios = require("axios");
-var cors = require('cors')
+const cors = require('cors');
+const conf = require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dbConfig = require("./config/config.js");
