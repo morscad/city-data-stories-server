@@ -5,3 +5,8 @@ build/
 .idea
 .gradle
 .env*
+public/images/original/*
+!public/images/original/README.md
+
+public/images/resized/*
+!public/images/resized/README.md
