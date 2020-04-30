@@ -75,7 +75,7 @@ app.post("/annotate/lng/:lng/lat/:lat", upload, function(req, res) {
   const formData = req.body;
 
   const { lng, lat } = req.params;
-  const { captions, authorName, type, flagged, fileMimeType } = req.body;
+  const { title, captions, authorName, type, flagged, fileMimeType } = req.body;
   upload(req, res, err => {
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
@@ -83,10 +83,10 @@ app.post("/annotate/lng/:lng/lat/:lat", upload, function(req, res) {
       return res.status(500).json(err);
     }
     const saveFileQuery = `INSERT INTO media_annotations
-                              (filename, longitude, latitude, captions, authorName, type, fileMimeType, uploaded_on, flagged) 
+                              (filename, longitude, latitude, title, captions, authorName, type, fileMimeType, uploaded_on, flagged) 
                               VALUES ('${
                                 req.file.filename
-                              }', '${lng}', '${lat}', '${captions}', '${authorName}', '${type}', '${fileMimeType}', '${Date.now()}', '${flagged}')
+                              }', '${lng}', '${lat}', '${title}', '${captions}', '${authorName}', '${type}', '${fileMimeType}', '${Date.now()}', '${flagged}')
                              `;
     conn.query(saveFileQuery, async (err, imageSaveResult) => {
       if (type === "images") {
