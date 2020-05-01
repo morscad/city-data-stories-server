@@ -21,6 +21,7 @@ app.use(cors());
 app.all("*", (request, response, next) => {
   console.log("\n--------------------------------");
   console.log(new Date().toUTCString());
+  console.log(`Using static folder: ${process.env.BASE_PATH}public`);
   console.log("Request: ", request.method + " " + request.headers.origin);
   console.log("---");
   console.log("Body", JSON.stringify(request.body));
