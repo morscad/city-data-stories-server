@@ -55,7 +55,7 @@ const randomString = length => {
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images/original");
+    cb(null, "./public/images/original");
   },
   filename: (req, file, cb) => {
     cb(
@@ -90,9 +90,9 @@ app.post("/annotate/lng/:lng/lat/:lat", upload, function(req, res) {
                              `;
     conn.query(saveFileQuery, async (err, imageSaveResult) => {
       if (type === "images") {
-        sharp(`public/images/original/${req.file.filename}`)
+        sharp(`./public/images/original/${req.file.filename}`)
           .resize(100)
-          .toFile(`public/images/resized/${req.file.filename}`)
+          .toFile(`./public/images/resized/${req.file.filename}`)
           .then(() => {
             return res.status(200).send(req.file);
           });
